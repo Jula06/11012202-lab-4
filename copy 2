@@ -1,0 +1,190 @@
+zsh: corrupt history file /home/kali/.zsh_history
+┌──(kali㉿kali)-[~]
+└─$ nano openssl.cnf
+                                                                                                                    
+┌──(kali㉿kali)-[~]
+└─$ openssl req -new -x509 -keyout ca.key -out ca.crt -config openssl.cnf
+req: Error on line 149 of config file "openssl.cnf"
+40D62085B27F0000:error:07000065:configuration file routines:def_load_bio:missing equal sign:../crypto/conf/conf_def.c:525:HERE-->"policy = policy_match".line 149
+                                                                                                                    
+┌──(kali㉿kali)-[~]
+└─$ nano openssl.cnf
+                                                                                                                    
+┌──(kali㉿kali)-[~]
+└─$ openssl req -new -x509 -keyout ca.key -out ca.crt -config openssl.cnf
+req: Error on line 149 of config file "openssl.cnf"
+40461BA0BE7F0000:error:07000065:configuration file routines:def_load_bio:missing equal sign:../crypto/conf/conf_def.c:525:HERE-->"policy = policy_match".line 149
+                                                                                                                    
+┌──(kali㉿kali)-[~]
+└─$ 
+                                                                                                                    
+                                                                                                                                           
+┌──(kali㉿kali)-[~]
+└─$ openssl req -new -x509 -keyout ca.key -out ca.crt -config openssl.cnf
+req: Error on line 149 of config file "openssl.cnf"
+40A6C08B297F0000:error:07000065:configuration file routines:def_load_bio:missing equal sign:../crypto/conf/conf_def.c:525:HERE-->"policy = policy_match".line 149
+                                                                                                                                           
+┌──(kali㉿kali)-[~]
+└─$ sudo nano /etc/ssl/openssl.cnf
+
+[sudo] password for kali: 
+                                                                                                                                           
+┌──(kali㉿kali)-[~]
+└─$ mkdir -p demoCA/certs demoCA/crl demoCA/newcerts
+touch demoCA/index.txt
+echo 1000 > demoCA/serial
+
+                                                                                                                    
+┌──(kali㉿kali)-[~]
+└─$ openssl req -new -x509 -keyout ca.key -out ca.crt -config openssl.cnf
+req: Error on line 149 of config file "openssl.cnf"
+40D685D14B7F0000:error:07000065:configuration file routines:def_load_bio:missing equal sign:../crypto/conf/conf_def.c:525:HERE-->"policy = policy_match".line 149
+                                                                                                                    
+┌──(kali㉿kali)-[~]
+└─$ nano openssl.cnf
+                                                                                                                    
+┌──(kali㉿kali)-[~]
+└─$ openssl req -new -x509 -keyout ca.key -out ca.crt -config openssl.cnf
+...+............+.....+......+...+......+.+..+..........+++++++++++++++++++++++++++++++++++++++*...+....+...........+....+......+........+.............+..+.+...........+...+++++++++++++++++++++++++++++++++++++++*...+.......+........+...............+....+......+.........+......+......+..................+...........+.+...+.....+......+............+....+...+...+.....+....+...+........+.........+.+.....+....+.....................+........+....+.................+.........+.+.....+...+.......+...+..+.............+.....+.+..............+.+............+.........+...+.....+......+.+.....+....+..+..........+.....+.........+.+...+.........+..+.............+..+....+.................+.........+.........+.+........+.......+.....+......+...+......+.+.....+...+................+.....+....+......+...+........+...+.........+.+.....................+......+..+......+.+.........+.........+........+............+.+...............+.........+..+................+..+.+.....+.+...+........+...+.......+...+............+..+.++++++
+...+..........+..+++++++++++++++++++++++++++++++++++++++*.+........+...+++++++++++++++++++++++++++++++++++++++*.......+...+..........+...+.....+......+.........+.......+..+.............+..+......+.......+...+.........+.....+.+......+...+............+...+...+.....+.............+......+.......................+..........+...+...+..+...+....+........+.......+..................+..+...+..........+..+.+.....+.+...............+......+........+......+.............+...+...+...........+......+...+.+......+...+..+.......+............+........+.+..+...+....+...+.....+.........+..............................++++++
+Enter PEM pass phrase:
+Verifying - Enter PEM pass phrase:
+-----
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) [AU]:TH
+State or Province Name (full name) [Some-State]:Korat
+Locality Name (eg, city) []:Bangkok
+Organization Name (eg, company) [Internet Widgits Pty Ltd]:DIGITECH
+Organizational Unit Name (eg, section) []:tech
+Common Name (e.g. server FQDN or YOUR name) []:B6641139
+Email Address []:b6641139pj@gmail.com
+                                                                                                                    
+┌──(kali㉿kali)-[~]
+└─$ openssl genrsa -des3 -out server.key 1024
+Enter PEM pass phrase:
+Verifying - Enter PEM pass phrase:
+                                                                                                                    
+┌──(kali㉿kali)-[~]
+└─$ openssl req -new -key server.key -out server.csr -config openssl.cnf
+Enter pass phrase for server.key:
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) [AU]:TH
+State or Province Name (full name) [Some-State]:Korat
+Locality Name (eg, city) []:Bangkok
+Organization Name (eg, company) [Internet Widgits Pty Ltd]:B6641139
+Organizational Unit Name (eg, section) []:tech
+Common Name (e.g. server FQDN or YOUR name) []:B6641139
+Email Address []:b6641139pj@gmail.com
+
+Please enter the following 'extra' attributes
+to be sent with your certificate request
+A challenge password []:kali
+An optional company name []:PKILabserver        
+                                                                                                                    
+┌──(kali㉿kali)-[~]
+└─$ openssl ca -in server.csr -out server.crt -cert ca.crt -keyfile ca.key \
+-config openssl.cnf
+
+Using configuration from openssl.cnf
+Enter pass phrase for ca.key:
+variable lookup failed for CA_default::policy
+40565A283C7F0000:error:0700006C:configuration file routines:NCONF_get_string:no value:../crypto/conf/conf_lib.c:315:group=CA_default name=policy
+                                                                                                                    
+┌──(kali㉿kali)-[~]
+└─$ openssl ca -in server.csr -out server.crt -cert ca.crt -keyfile ca.key \
+-config openssl.cnf
+
+Using configuration from openssl.cnf
+Enter pass phrase for ca.key:
+variable lookup failed for CA_default::policy
+404643E7447F0000:error:0700006C:configuration file routines:NCONF_get_string:no value:../crypto/conf/conf_lib.c:315:group=CA_default name=policy
+                                                                                                                    
+┌──(kali㉿kali)-[~]
+└─$ nano openssl.cnf
+                                                                                                                    
+┌──(kali㉿kali)-[~]
+└─$ openssl ca -in server.csr -out server.crt -cert ca.crt -keyfile ca.key \
+-config openssl.cnf
+
+Using configuration from openssl.cnf
+ca: Error on line 149 of config file "openssl.cnf"
+40D6645CD87F0000:error:07000065:configuration file routines:def_load_bio:missing equal sign:../crypto/conf/conf_def.c:525:HERE-->"policy = policy_anything".line 149
+                                                                                                                    
+┌──(kali㉿kali)-[~]
+└─$ openssl ca -in server.csr -out server.crt -cert ca.crt -keyfile ca.key -config openssl.cnf
+
+Using configuration from openssl.cnf
+ca: Error on line 149 of config file "openssl.cnf"
+400643BBB87F0000:error:07000065:configuration file routines:def_load_bio:missing equal sign:../crypto/conf/conf_def.c:525:HERE-->"policy = policy_anything".line 149
+                                                                                                                    
+┌──(kali㉿kali)-[~]
+└─$ 
+                                                                                                                    
+┌──(kali㉿kali)-[~]
+└─$ nano openssl.cnf
+                                                                                                                    
+┌──(kali㉿kali)-[~]
+└─$ openssl ca -in server.csr -out server.crt -cert ca.crt -keyfile ca.key -config openssl.cnf
+
+Using configuration from openssl.cnf
+Enter pass phrase for ca.key:
+Check that the request matches the signature
+Signature ok
+Certificate Details:
+        Serial Number: 4096 (0x1000)
+        Validity
+            Not Before: Sep  8 19:10:49 2024 GMT
+            Not After : Sep  8 19:10:49 2025 GMT
+        Subject:
+            countryName               = TH
+            stateOrProvinceName       = Korat
+            localityName              = Bangkok
+            organizationName          = B6641139
+            organizationalUnitName    = tech
+            commonName                = B6641139
+            emailAddress              = b6641139pj@gmail.com
+        X509v3 extensions:
+            X509v3 Basic Constraints: 
+                CA:FALSE
+            X509v3 Subject Key Identifier: 
+                0D:98:B9:FA:94:2B:1F:7C:AA:E8:82:7B:04:21:92:23:06:84:C7:B7
+            X509v3 Authority Key Identifier: 
+                AC:32:D4:BA:BE:34:2A:65:53:25:CD:E5:1D:B1:B2:A4:C4:65:D5:62
+Certificate is to be certified until Sep  8 19:10:49 2025 GMT (365 days)
+Sign the certificate? [y/n]:y
+
+
+1 out of 1 certificate requests certified, commit? [y/n]y
+Write out database with 1 new entries
+Database updated
+                                                                                                                    
+┌──(kali㉿kali)-[~]
+└─$ cp server.key server.pem cat server.crt >> server.pem 
+
+cp: target 'server.crt': Not a directory
+                                                                                                                    
+┌──(kali㉿kali)-[~]
+└─$ cp server.key server.pem                             
+cat server.crt >> server.pem
+
+
+                                                                                                                    
+┌──(kali㉿kali)-[~]
+└─$ openssl s_server -cert server.pem -www
+Enter pass phrase for server.pem:
+Enter pass phrase for server.pem:
+Using default temp DH parameters
+ACCEPT
+
